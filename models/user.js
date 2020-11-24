@@ -3,43 +3,40 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     firstName: {
-      type: String,
-      required: true
+      type: String
     },
     lastName: {
-        type: String,
-        required: true
+        type: String
       },
     email: {
       type: String,
       required: true
     },
     address: {
-        type: String,
-        required: true
+        type: String
     },
     phone: {
-        type: Number,
-        required: true
+        type: Number
     },
     dob: {
-      type: Date,
-      required: true
+      type: Date
     },
     emergencyFirstName: {
-        type: String,
-        required: true
+        type: String
     },  
     emergencyLastName: {
-        type: String,
-        required: true
+        type: String
     },
     emergencyPhone: {
-        type: Number,
-        required: true
+        type: Number
+    },
+    googleId: {
+      type: String
     }
     // destinations: [destinationSchema],
     // tickets: [{type: Schema.Types.ObjectId, ref: 'Ticket'}]
+  }, {
+    timestamps: true
   });
   
   module.exports = mongoose.model ('User', userSchema);
