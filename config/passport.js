@@ -76,6 +76,9 @@ passport.deserializeUser(function(id, done) {
     console.log('id: ', id);
     //this is wehre we find the document to attach to req.user
     User.findById(id, function(err, user) {
+        console.log('CHECK 6 *****');
+        console.log('err: ', err);
+        console.log('user: ', user);
         done(err, user); // assigns our documet to req.user/ 
     });
 });

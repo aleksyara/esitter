@@ -1,7 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const addressSchema = new Schema({
+  address1: String,
+  address2: String,
+  city: String,
+  state: String,
+  zip: String
+})
+
+const emergencySchema = new Schema({
+  firstName: String,
+  lastName: String,
+  phone: String,
+  email: String,
+ })
+
+ const userSchema = new Schema({
     firstName: {
       type: String
     },
@@ -13,7 +28,7 @@ const userSchema = new Schema({
       required: true
     },
     address: {
-        type: String
+        type: addressSchema
     },
     phone: {
         type: Number
@@ -21,14 +36,15 @@ const userSchema = new Schema({
     dob: {
       type: Date
     },
-    emergencyFirstName: {
-        type: String
-    },  
-    emergencyLastName: {
-        type: String
+    skills: {
+      type: String,
+      enum: ['ART', 'CHE', 'MUS', 'ENG', 'CODE', 'STG']
     },
-    emergencyPhone: {
-        type: Number
+    emergency: {
+      type: emergencySchema
+    },
+    aboutYou: {
+      type: String
     },
     googleId: {
       type: String

@@ -43,6 +43,13 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+//to make sure req.user is accessible in every view
+app.use(function(req, res, next){
+  //attached to locaals is what the property/variavle that will be available trough our app
+  res.locals.user = req.user;//if we are mot looged in req.user will be undefined. res.locals gives by Express
+  // app.set('user', {email: 'asdfasdfasf'});
+  next();
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
