@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+
+    <h1>This is a list of all available classes.</h1>
+
+    <section id="show-classes">
+        <table>
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Description</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Enroll</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% classes.forEach(function(c) { %>
+            <tr>
+              <td><%= c.topic %></td>
+              <td><%= c.description %></td>
+              <td><%= c.startDate %></td>
+              <td><%= c.endDate %></td>
+              <td><a href="/">Enroll</a></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+    </section>
+
+
+<%- include('../partials/footer') %>

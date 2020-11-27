@@ -1,5 +1,4 @@
 const { response } = require('express');
-const user = require('../models/user');
 const User = require('../models/user');
 // const moment = require('moment');
 // const DateFormatter = require('../utils/date-fomratter');
@@ -38,11 +37,16 @@ function index (req, res, next) {
 function create(req, res) {
   console.log('req.body: ', req.body);
   User.findById(req.params.id, function(err, myUser) {
-    console.log('myUser: ', myUser);
+    // console.log('myUser: ', myUser);
     if (err || !myUser) return res.redirect('/users/additional-info');
     
     myUser.address = {};
     myUser.emergency = {};
+
+    req.body.roll === 'mentor' ? myUser.isMentor = true : null;
+    req.body.roll === 'mentor' ? myUser.isStudent = false : null;
+    req.body.roll === 'student' ? myUser.isStudent = true : null;
+    req.body.roll === 'student' ? myUser.isMentor = false : null;
     req.body.firstName ? myUser.firstName = req.body.firstName : null;
     req.body.lastName ? myUser.lastName = req.body.lastName : null;
 

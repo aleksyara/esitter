@@ -76,9 +76,25 @@ input[type=text], input[type=password] {
   background: #f1f1f1;
 }
 
+input[type=date] {
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
+}
+
+.form-group {
+  width: 100%;
+}
+.form-group label {
+  width: 100%;
+  display: inline-block;
 }
 
 /* Overwrite default styles of hr */

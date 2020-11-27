@@ -1,3 +1,13 @@
 <h1>User Page</h1>
 
-<a href="/users/additional-info">Edit my additional info</a>
+<a href="/users/additional-info">Edit your info</a>
+
+<%if(user.isMentor){%>
+    <a href="/classes/new">Open a new class</a>
+<%}%>
+
+<%if(user.isStudent){%>
+    <p>sign up for a class</p>
+    <a href="/classes">Show available classes</a>
+<%}%>
+

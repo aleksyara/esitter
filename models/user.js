@@ -43,8 +43,14 @@ const emergencySchema = new Schema({
     emergency: {
       type: emergencySchema
     },
-    aboutYou: {
+    about: {
       type: String
+    },
+    isMentor: {
+      type: Boolean
+    },
+    isStudent: {
+      type: Boolean
     },
     googleId: {
       type: String
