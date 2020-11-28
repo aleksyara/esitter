@@ -14,10 +14,7 @@ router.get('/user-page', function(req, res, next) {
     res.render('users/user-page', {user: myUser});
 });
 
-router.get('/user-page/:id', function(req, res, next) {
-    let myUser = JSON.parse(JSON.stringify(req.user));
-    res.render('users/user-page', {user: myUser});
-});
+router.get('/user-page/:id', usersCtrl.show);
 
 router.get('/log-in', function(req, res, next) {
     res.render('users/log-in');
