@@ -1,0 +1,9 @@
+<h3>You are about to enroll in a class</h3>
+<p>classID: <%= classId %></5></p>
+<p>studentID: <%= studentId %></5></p>
+
+
+
+<form method="post" action="/classes/enroll/<%= classId %>">
+    <button type="submit">Enroll</button>
+</form>

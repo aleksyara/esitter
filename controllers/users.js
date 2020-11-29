@@ -11,7 +11,7 @@ module.exports = {
 };
   
 function index (req, res, next) {
-  res.render('users/user-page', {});
+  res.render('users/user-page', {title: "User-Page", user: {}});
 };
 
   // function create(req, res) {
@@ -79,7 +79,9 @@ function create(req, res) {
 function show(req, res) {
   User
   .findById(req.params.id)
-  .populate('classesAsMentor').exec((err, user) => {
+  .populate('classesAsMentor')
+  .populate('classesAsStudent')
+  .exec((err, user) => {
     if (err) return res.render('error');
     res.render('users/user-page', {title: 'Your Page', user})
   })
