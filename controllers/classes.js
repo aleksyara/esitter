@@ -8,7 +8,7 @@ function showAllClasses (req, res, next) {
     Class.find(function(err, classes) {
         if (err) return next(err);  
         let formattedClasses = DateFormatter.formatClassesDates(classes);
-        res.render('classes/index', {title: 'classes', classes: formattedClasses}); 
+        res.render('classes/index', {title: 'classes', classes: formattedClasses, isLoggedIn: req.isAuthenticated()}); 
     });
 
     
@@ -37,7 +37,7 @@ function createNewClass (req, res, next) {
 function prepareToEnroll(req, res, next) {
     let classId = req.params.classId;
     let studentId = req.user.id;
-    res.render('classes/confirm-enrollment', {title: 'Confirm Enrollment', classId, studentId}); 
+    res.render('classes/confirm-enrollment', { title: 'Confirm Enrollment', classId, studentId, isLoggedIn: req.isAuthenticated() }); 
 }
 
 function enrollIntoClass(req, res, next) {

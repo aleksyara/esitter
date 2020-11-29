@@ -9,16 +9,9 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.GOOGLE_CALLBACK
   },
   function(accessToken, refreshToken, profile, cb) {
-    // console.log('CHEC 1 *****');
-    // console.log('profile: ', profile);
-    // console.log('profile.emails: ', profile.emails);
-    // console.log('profile.emails[0].value: ', profile.emails[0].value);
-    
     User.findOne({ 'googleId': profile.id }, function(err, myUser) {
         if (err) return cb(err);
         if (!err && myUser) {
-            // console.log('CHECK 2A *****');
-            // console.log('err: ', err);
             // console.log('myUser: ', myUser);
             // we know this is a returning customer
             // check if there any missing information

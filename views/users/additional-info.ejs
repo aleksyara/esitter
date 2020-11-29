@@ -38,27 +38,27 @@
         <label for="address">Address:</label>
         <div>
             <div>
-              <input type="text" name="addressLine1" id="addressLine1" value="<%= user.address ? user.address.address1 : null %>">
+              <input type="text" name="addressLine1" id="addressLine1" value="<%= user.address && user.address[0] ? user.address[0].address1 : null %>">
               <label for="addressLine1">Street #1</label>
             </div>
           </div>
           <div>
             <div>
-              <input type="text" name="addressLine2" id="addressLine2" value="<%= user.address ? user.address.address2 : null %>">
+              <input type="text" name="addressLine2" id="addressLine2" value="<%= user.address && user.address[0] ? user.address[0].address2 : null %>">
               <label for="addressLine2">Street #2</label>
             </div>
           </div>
           <div>
             <div class="city-wrap">
-              <input type="text" name="city" id="city" value="<%= user.address ? user.address.city : null %>">
+              <input type="text" name="city" id="city" value="<%= user.address && user.address[0] ? user.address[0].city : null %>">
               <label for="city">City</label>
             </div>
              <div class="state-wrap">
-              <input type="text" name="state" id="state" value="<%= user.address ? user.address.state : null %>">
+              <input type="text" name="state" id="state" value="<%= user.address && user.address[0] ? user.address[0].state : null %>">
               <label for="state">State</label>
             </div>
              <div class="zip-wrap">
-              <input type="text" pattern="[0-9]*" name="zip" id="zip" value="<%= user.address ? user.address.zip : null %>">
+              <input type="text" pattern="[0-9]*" name="zip" id="zip" value="<%= user.address && user.address[0] ? user.address[0].zip : null %>">
               <label for="zip">Zip</label>
             </div>
           </div>

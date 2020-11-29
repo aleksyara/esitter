@@ -1,13 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const addressSchema = new Schema({
-  address1: String,
-  address2: String,
-  city: String,
-  state: String,
-  zip: String
-})
+
 
 const emergencySchema = new Schema({
   firstName: String,
@@ -27,9 +21,10 @@ const emergencySchema = new Schema({
       type: String,
       required: true
     },
-    address: {
-        type: addressSchema
-    },
+    address: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Address'
+    }],
     phone: {
         type: Number
     },

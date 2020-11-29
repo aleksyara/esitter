@@ -1,47 +1,38 @@
 const { response } = require('express');
 const User = require('../models/user');
-// const moment = require('moment');
-// const DateFormatter = require('../utils/date-fomratter');
+const Address = require('../models/address');
+var moment = require('moment');
 
 
 module.exports = {
     index: index,
     create,
-    show
+    show,
+    prepeareToShowAdditionalInfo
 };
   
 function index (req, res, next) {
-  res.render('users/user-page', {title: "User-Page", user: {}});
+  res.render('users/user-page', {title: "User-Page", user: {}, isLoggedIn: req.isAuthenticated()});
 };
-
-  // function create(req, res) {
-  //   const user = new User(req.body);
-  //   if (req && req.body && req.body.departs === '') {
-  //     let date = new Date();
-  //     let year = date.getFullYear();
-  //     let month = date.getMonth();
-  //     let day = date.getDate();
-  //     flight.departs = new Date(year + 1, month, day);
-  //   }
-
-  //   flight.save(function(err) {
-  //     console.log('This is error: ', err);
-  //     // one way to handle errors
-  //     if (err) return res.redirect('/users/log-in');
-  //     console.log('user: ', user);
-  //     // for now, redirect right back to new.ejs
-  //     res.redirect('/users/user-page');
-  //   });
-  // }
-  
+ 
 function create(req, res) {
   console.log('req.body: ', req.body);
   User.findById(req.params.id, function(err, myUser) {
     // console.log('myUser: ', myUser);
     if (err || !myUser) return res.redirect('/users/additional-info');
     
-    myUser.address = {};
+    // myUser.address = [];
     myUser.emergency = {};
+
+    let newAddress = new Address({
+      address1: req.body.addressLine1 ? req.body.addressLine1 : null,
+      addressLine2: req.body.addressLine2 ? req.body.addressLine2 : null,
+      city: req.body.city ? req.body.city : null,
+      state: req.body.state ? req.body.state : null,
+      zip: req.body.zip ? req.body.zip : null
+    });
+
+    myUser.address.push(newAddress);
 
     req.body.roll === 'mentor' ? myUser.isMentor = true : null;
     req.body.roll === 'mentor' ? myUser.isStudent = false : null;
@@ -49,12 +40,6 @@ function create(req, res) {
     req.body.roll === 'student' ? myUser.isMentor = false : null;
     req.body.firstName ? myUser.firstName = req.body.firstName : null;
     req.body.lastName ? myUser.lastName = req.body.lastName : null;
-
-    req.body.addressLine1 ? myUser.address.address1 = req.body.addressLine1 : null;
-    req.body.addressLine2 ? myUser.address.address2 = req.body.addressLine2 : null;
-    req.body.city ? myUser.address.city = req.body.city : null;
-    req.body.state ? myUser.address.state = req.body.state : null;
-    req.body.zip ? myUser.address.zip = req.body.zip : null;
 
     req.body.phone ? myUser.phone = req.body.phone : null;
     req.body.dob ? myUser.dob = req.body.dob : null;
@@ -68,12 +53,46 @@ function create(req, res) {
 
     console.log('myUser: ', myUser);
 
-    myUser.save(function(err2) {
-      if (err2) return res.render('error');
-      res.redirect('/users/' + req.params.id);
+    newAddress.save(newAddress, (err) => {   
+      if (err) return next(err);
+
+      myUser.save(function(err2) {
+        if (err2) return next(err2);
+        res.redirect('/users/' + req.params.id);
+      });
+
     });
+
   });
 
+}
+
+function prepeareToShowAdditionalInfo(req, res, next) {
+ 
+  let loggedInUser = JSON.parse(JSON.stringify(req.user));
+  let userId = loggedInUser._id;
+
+  User
+  .findById(userId)
+  .populate('address')
+  .exec((err, user) => {
+    if (err) return next(err);
+    if (!err && user) {
+      let myUser = JSON.parse(JSON.stringify(user));  
+      if (myUser.dob) {
+        console.log('CHECK 2 *****');
+        let myDate = moment(myUser.dob).format("YYYY-MM-DD");
+        myUser.dob = myDate;
+      }
+      res.render('users/additional-info', { title: 'Info', user: myUser, isLoggedIn: req.isAuthenticated() });
+    } else {
+      let error = new Error();
+      error.message = 'Could not retrieve user';
+      error.status = 400;
+      return next(error);
+    }
+    
+  });
 }
 
 function show(req, res) {
@@ -82,8 +101,8 @@ function show(req, res) {
   .populate('classesAsMentor')
   .populate('classesAsStudent')
   .exec((err, user) => {
-    if (err) return res.render('error');
-    res.render('users/user-page', {title: 'Your Page', user})
+    if (err) return next(err);
+    res.render('users/user-page', {title: 'Your Page', user, isLoggedIn: req.isAuthenticated()})
   })
 
 }

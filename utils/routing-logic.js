@@ -10,10 +10,11 @@ function determineRedirectRouteAfterGoogleAuthentication(user) {
         user.firstName &&
         user.lastName &&
         user.address &&
-        user.address.address1 &&
-        user.address.city &&
-        user.address.state &&
-        user.address.zip &&
+        user.address.length &&
+        user.address[0].address1 &&
+        user.address[0].city &&
+        user.address[0].state &&
+        user.address[0].zip &&
         user.phone &&
         user.dob &&
         user.skills &&

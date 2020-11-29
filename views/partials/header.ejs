@@ -9,8 +9,17 @@
         <li><a href="/main">MEET MENTORS</a></li>
         <li><a href="/main">HOW IT WORKS</a></li>
         <li><a href="/main">SUPPORT FIRST RESPONDERS</a></li>
-        <li><a href="/users/log-in">LOGIN</a></li>
-        <li><a href="/users/logout">LOGOUT</a></li>
+
+        <%if(isLoggedIn){%>
+          <li><a href="/users/user-page">YOUR PAGE</a></li>
+        <%}%>
+
+        <%if(!isLoggedIn){%>
+          <li><a href="/users/log-in">LOGIN</a></li>
+        <%}%>
+        <%if(isLoggedIn){%>
+          <li><a href="/users/logout">LOGOUT</a></li>
+        <%}%>
       </ul>
      
     </div>

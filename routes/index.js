@@ -1,5 +1,6 @@
 var express = require('express');
 const passport = require('passport');
+const User = require('../models/user');
 var router = express.Router();
 var RoutingLogic = require('../utils/routing-logic');
 // const moment = require('moment');
@@ -9,7 +10,7 @@ var RoutingLogic = require('../utils/routing-logic');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'eSitter' });
+  res.render('index', { title: 'eSitter', isLoggedIn: req.isAuthenticated()});
 });
 
 //trigers a login
@@ -40,12 +41,16 @@ router.get(
     }),
   function(req, res) {
     let myUser = req.user;
-    res.redirect(RoutingLogic.determineRedirectRouteAfterGoogleAuthentication(myUser));
+    let userId = myUser._id;
+
+    User
+    .findById(userId)
+    .populate('address')
+    .exec(function(err, user) {
+      if (err) res.render('error'); 
+      res.redirect(RoutingLogic.determineRedirectRouteAfterGoogleAuthentication(user));
+    });
   }
 );
-
-
-
-
 
 module.exports = router;

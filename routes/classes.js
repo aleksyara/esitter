@@ -5,7 +5,7 @@ var classesCtrl = require('../controllers/classes');
 
 router.get('/', isLoggedIn, classesCtrl.showAllClasses);
 router.get('/new', isLoggedIn, function(req, res, next) {
-    res.render('classes/new-class', { title: "Add New Class" });
+    res.render('classes/new-class', { title: 'Add New Class', isLoggedIn: req.isAuthenticated() });
 });
 
 router.post('/', isLoggedIn, classesCtrl.createNewClass); 
