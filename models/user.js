@@ -54,9 +54,11 @@ const emergencySchema = new Schema({
     },
     googleId: {
       type: String
-    }
+    },
+    classesAsStudent: [{type: Schema.Types.ObjectId, ref: 'Class'}],
+    classesAsMentor: [{type: Schema.Types.ObjectId, ref: 'Class'}]
     // destinations: [destinationSchema],
-    // tickets: [{type: Schema.Types.ObjectId, ref: 'Ticket'}]
+   
   }, {
     timestamps: true
   });

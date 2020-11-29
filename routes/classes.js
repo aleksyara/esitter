@@ -10,6 +10,8 @@ router.get('/new', function(req, res, next) {
 
 router.post('/', classesCtrl.createNewClass); 
 
+router.get('/enroll/:id', classesCtrl.enrollIntoClass); 
+
 
 module.exports = router;
 

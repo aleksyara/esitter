@@ -75,18 +75,13 @@ function create(req, res) {
   });
 
 }
-function show(req, res) {
-  console.log('CHECK 0A *****');
-  console.log('req.session: ', req.session);
 
-  console.log('CHECK 1 *****');
-  console.log('req.params: ', req.params);
-  User.findById(req.params.id, function(err, user) {
-    console.log('CHECK 2 *****');
-    console.log("err: ", err);
+function show(req, res) {
+  User
+  .findById(req.params.id)
+  .populate('classesAsMentor').exec((err, user) => {
     if (err) return res.render('error');
-    console.log('CHECK 3 *****');
-    console.log("user: ", user);
     res.render('users/user-page', {title: 'Your Page', user})
-  }); 
+  })
+
 }

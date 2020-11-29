@@ -18,7 +18,8 @@ const classSchema = new Schema({
         type: String,
         enum: ['art', 'chess', 'music', 'esl', 'code', 'stage'],
     },
-    mentor: {type: Schema.Types.ObjectId, ref: 'User'}
+    mentor: {type: Schema.Types.ObjectId, ref: 'User'},
+    students: [{type: Schema.Types.ObjectId, ref: 'User'}]
   })
 
   module.exports = mongoose.model ('Class', classSchema);

@@ -3,11 +3,37 @@
 <a href="/users/additional-info">Edit your info</a>
 
 <%if(user.isMentor){%>
-    <a href="/classes/new">Open a new class</a>
+  <a href="/classes/new">Open a new class</a>
+
+  <section id="users-classes-as-mentor">
+    <table>
+      <thead>
+        <tr>
+          <th>Topic</th>
+          <th>Description</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% user.classesAsMentor.forEach(function(c) { %>
+        <tr>
+          <td><%= c.topic %></td>
+          <td><%= c.description %></td>
+          <td><%= c.startDate %></td>
+          <td><%= c.endDate %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+</section>
+
 <%}%>
 
 <%if(user.isStudent){%>
     <p>sign up for a class</p>
     <a href="/classes">Show available classes</a>
 <%}%>
+
+
 
