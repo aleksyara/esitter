@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
+const reviewSchema = new Schema({
+  content: String,
+  rating: {type: Number, min: 1, max: 5, default: 5}
+}, {
+  timestamps: true
+});
 
 const emergencySchema = new Schema({
   firstName: String,
@@ -57,7 +62,8 @@ const emergencySchema = new Schema({
     classesAsMentor: [{
       type: Schema.Types.ObjectId,
       ref: 'Class'
-    }] 
+    }],
+    reviews: [reviewSchema] 
   }, {
     timestamps: true
   });

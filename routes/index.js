@@ -7,11 +7,20 @@ var RoutingLogic = require('../utils/routing-logic');
 // const DateFormatter = require('../utils/date-fomratter');
 
 
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'eSitter', isLoggedIn: req.isAuthenticated()});
 });
+
+router.get('/about', function(req, res, next) {
+  res.render('about', { title: 'eSitter', isLoggedIn: req.isAuthenticated()});
+});
+
+router.get('/first-responders', function(req, res, next) {
+  res.render('first-responders', { title: 'eSitter', isLoggedIn: req.isAuthenticated()});
+});
+
+
 
 //trigers a login
 // Google OAuth login route

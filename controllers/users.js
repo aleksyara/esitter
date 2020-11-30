@@ -15,8 +15,6 @@ function index (req, res, next) {
   
   User.find({isMentor: true}, function(err, users) {
     if (err) return next(err);
-    // console.log("***************");
-    // res.send('All good');
     res.render('users/all-mentors', {title: "All Mentors", users, isLoggedIn: req.isAuthenticated()});
   });
   };

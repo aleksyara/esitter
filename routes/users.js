@@ -6,7 +6,7 @@ const user = require('../models/user');
 /* GET users listing. NEED TO FIX LATER */
 router.get('/', isLoggedIn, usersCtrl.index);
 
-router.get('/all-mentors', isLoggedIn, usersCtrl.index);
+router.get('/all-mentors', usersCtrl.index);
 
 // Route is not typically used, it was created during development/testing phase
 router.get('/user-page', isLoggedIn, function(req, res, next) {

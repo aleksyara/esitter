@@ -5,6 +5,7 @@
 <a href="/users/additional-info">Edit your info</a>
 
 <%if(user.isMentor){%>
+  <h1>Wellcome, <%= user.firstName + " " + user.lastName %></h1>
   <a href="/classes/new">Open a new class</a>
 
   <section id="users-classes-as-mentor">
@@ -33,6 +34,7 @@
 <%}%>
 
 <%if(user.isStudent){%>
+    <h1>Wellcome, <%= user.firstName + " " + user.lastName %></h1>
     <p>sign up for a class</p>
     <a href="/classes">Show available classes</a>
 
@@ -59,8 +61,26 @@
         </tbody>
       </table>
     </section>
+
+  
 <%}%>
 
-
+        <!-- implementing reviews  -->
+        <br><br><h2>Add Review</h2>
+        <form id="add-review-form" method="POST"
+          action="/users/<%= user._id %>/reviews">
+          <label>Leave Review:</label>
+          <textarea name="content"></textarea>
+          <label>Rating:</label>
+          <select name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          
+          <input type="submit" value="Add Review">
+        </form>
 
 <%- include('../partials/footer') %>
