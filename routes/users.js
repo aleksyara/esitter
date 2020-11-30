@@ -22,8 +22,7 @@ router.get('/log-in', function(req, res, next) {
 router.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
-  });
-
+});
 
 router.get('/additional-info', isLoggedIn, usersCtrl.prepeareToShowAdditionalInfo);
 
