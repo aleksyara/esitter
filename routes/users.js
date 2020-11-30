@@ -3,8 +3,10 @@ var router = express.Router();
 const usersCtrl = require('../controllers/users');
 const user = require('../models/user');
 
-/* GET users listing. */
+/* GET users listing. NEED TO FIX LATER */
 router.get('/', isLoggedIn, usersCtrl.index);
+
+router.get('/all-mentors', isLoggedIn, usersCtrl.index);
 
 // Route is not typically used, it was created during development/testing phase
 router.get('/user-page', isLoggedIn, function(req, res, next) {

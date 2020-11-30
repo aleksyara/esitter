@@ -12,8 +12,14 @@ module.exports = {
 };
   
 function index (req, res, next) {
-  res.render('users/user-page', {title: "User-Page", user: {}, isLoggedIn: req.isAuthenticated()});
-};
+  
+  User.find({isMentor: true}, function(err, users) {
+    if (err) return next(err);
+    // console.log("***************");
+    // res.send('All good');
+    res.render('users/all-mentors', {title: "All Mentors", users, isLoggedIn: req.isAuthenticated()});
+  });
+  };
  
 function create(req, res) {
   User.findById(req.params.id, function(err, myUser) {
@@ -94,7 +100,7 @@ function prepeareToShowAdditionalInfo(req, res, next) {
   });
 }
 
-function show(req, res) {
+function show(req, res, next) {
   User
   .findById(req.params.id)
   .populate('classesAsMentor')
