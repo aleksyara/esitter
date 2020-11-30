@@ -19,6 +19,7 @@ require('./config/passport');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var classessRouter = require('./routes/classes');
+// var reviewsRouter = require('./routes/reviews');
 const { allowedNodeEnvironmentFlags } = require('process');
 
 // view engine setup
@@ -45,6 +46,7 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/classes', classessRouter);
+// app.use('/', reviewsRouter);
 
 
 //to make sure req.user is accessible in every view
