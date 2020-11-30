@@ -68,7 +68,7 @@ function enrollIntoClass(req, res, next) {
                 myClass.students.push(studentId);
                 myClass.save(myClass, (err4) => {
                     if (err4) return next(err4);
-                    res.redirect('http://localhost:3000/users/user-page/' + studentId );
+                    res.redirect(process.env.HOST + '/users/user-page/' + studentId );
                 });
             });
         });

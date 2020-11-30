@@ -9,7 +9,7 @@ router.get('/', isLoggedIn, usersCtrl.index);
 // Route is not typically used, it was created during development/testing phase
 router.get('/user-page', isLoggedIn, function(req, res, next) {
     let myUser = JSON.parse(JSON.stringify(req.user));
-    res.redirect('http://localhost:3000/users/user-page/' + myUser._id);
+    res.redirect(process.env.HOST + '/users/user-page/' + myUser._id);
 });
 
 router.get('/user-page/:id', isLoggedIn, usersCtrl.show);

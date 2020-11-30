@@ -16,7 +16,6 @@ function index (req, res, next) {
 };
  
 function create(req, res) {
-  console.log('req.body: ', req.body);
   User.findById(req.params.id, function(err, myUser) {
     // console.log('myUser: ', myUser);
     if (err || !myUser) return res.redirect('/users/additional-info');
