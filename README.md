@@ -15,7 +15,7 @@ As the **COVID-19** emergency evolves and directly impacts first responders acro
 !["PrintScreen 1"](public/images/prntscrn1.png)
 !["PrintScreen 2"](public/images/prntscrn2.png)
 !["PrintScreen 3"](public/images/prntscrn3.png)
-!["PrintScreen 4"](public/images/prntscrn3.png)
+!["PrintScreen 4"](public/images/prntscrn4.png)
 
 
 2. Technologies Used
