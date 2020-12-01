@@ -1,6 +1,7 @@
 # eSitter
 ==================
-SEI-10-19 Project 2 
+
+As a part of SEI-10-19 Project 2, I created **eSitter**. 
 
 **eSitter** is an education platform that gathering talented young individuals, inspiring each other in educational entertainment manner.
 
