@@ -2,7 +2,7 @@ const User = require('../models/user');
 
 module.exports = {
 create,
-delete: deleteReview
+//delete: deleteReview
 };
 
 function create(req, res, next) {
@@ -22,15 +22,15 @@ function create(req, res, next) {
 }
 
 
-function deleteReview(req, res, next) {
-    console.log('***********req.body: ', req.body);
-    User.findById(req.params.id, function(err1, user) {
-        if (err1) return next(err1);
-        console.log('Expect to give review to user with ID: ', req.params.id);
-        user.reviews.pop(req.body);
-        user.save(function(err2) {
-            if (err2) return next(err2);
-            res.redirect(`/users/${user._id}`);
-        });
-    });
-  }
+// function deleteReview(req, res, next) {
+//     console.log('***********req.body: ', req.body);
+//     User.findById(req.params.id, function(err1, user) {
+//         if (err1) return next(err1);
+//         console.log('Expect to give review to user with ID: ', req.params.id);
+//         user.reviews.pop(req.body);
+//         user.save(function(err2) {
+//             if (err2) return next(err2);
+//             res.redirect(`/users/${user._id}`);
+//         });
+//     });
+//   }
