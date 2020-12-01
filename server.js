@@ -46,7 +46,7 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/classes', classessRouter);
-app.use('/', reviewsRouter);
+app.use('/reviews', reviewsRouter);
 
 
 //to make sure req.user is accessible in every view

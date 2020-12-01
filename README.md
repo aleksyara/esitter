@@ -11,7 +11,7 @@ As the **COVID-19** emergency evolves and directly impacts first responders acro
 **eSitter** will keep your child busy and entertained. 
 
 1. Screenshots
-
+!["PrintScreen"](public/images/prntscrn.png)
 !["PrintScreen 1"](public/images/prntscrn1.png)
 !["PrintScreen 2"](public/images/prntscrn2.png)
 !["PrintScreen 3"](public/images/prntscrn3.png)
@@ -27,7 +27,9 @@ As the **COVID-19** emergency evolves and directly impacts first responders acro
 * Express
 * Mongoose
 * Heroku
-* 
+* Atlas
+* MongoDB
+
 
 3. Getting Started
 
