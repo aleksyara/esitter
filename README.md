@@ -33,6 +33,8 @@ As the **COVID-19** emergency evolves and directly impacts first responders acro
 I utilize Trello and set a key milestones for the project.
 [Trello Board](https://trello.com/b/g1sYLjTs/sei-10-19-project-2-esitter)
 
+Please see ERD below.
+
 !["ERD"](public/images/ERD.png)
 
 # Link to deployed app:

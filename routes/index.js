@@ -3,9 +3,6 @@ const passport = require('passport');
 const User = require('../models/user');
 var router = express.Router();
 var RoutingLogic = require('../utils/routing-logic');
-// const moment = require('moment');
-// const DateFormatter = require('../utils/date-fomratter');
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -20,8 +17,6 @@ router.get('/first-responders', function(req, res, next) {
   res.render('first-responders', { title: 'eSitter', isLoggedIn: req.isAuthenticated()});
 });
 
-
-
 //trigers a login
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(
@@ -30,14 +25,6 @@ router.get('/auth/google', passport.authenticate(
 ));
 //where we go after logout
 // Google OAuth callback route
-// router.get('/oauth2callback', passport.authenticate(
-//   'google',
-//   {
-//     // successRedirect : './users/additional-info',
-//     successRedirect : RoutingLogic.determineRedirectRouteAfterGoogleAuthentication(),
-//     failureRedirect : '/users/login-failure'
-//   }
-// ));
 
 router.get(
   '/oauth2callback',
