@@ -5,7 +5,7 @@ As a part of SEI-10-19 Project 2, I created **eSitter**.
 
 **eSitter** is an education platform that gathering talented young individuals, inspiring each other in educational entertainment manner.
 
-As the **COVID-19** emergency evolves and directly impacts first responders across all over the nation, we want to support our first responders and their families so they could focus on important public safety duties while **eSitter** keep their child busy and entertained. 
+As the **COVID-19** emergency evolves and directly impacts first responders across all over the nation, we want to support our first responders and their families so they could focus on important public safety duties while **eSitter** keeps their child busy and entertained. 
 
 1. Screenshots
 !["PrintScreen"](public/images/prntscrn.png)
