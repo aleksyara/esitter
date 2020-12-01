@@ -83,8 +83,7 @@ function prepeareToShowAdditionalInfo(req, res, next) {
     if (!err && user) {
       let myUser = JSON.parse(JSON.stringify(user));  
       if (myUser.dob) {
-        console.log('CHECK 2 *****');
-        let myDate = moment(myUser.dob).format("YYYY-MM-DD");
+      let myDate = moment(myUser.dob).format("YYYY-MM-DD");
         myUser.dob = myDate;
       }
       res.render('users/additional-info', { title: 'Info', user: myUser, isLoggedIn: req.isAuthenticated() });
